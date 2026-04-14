@@ -23,10 +23,13 @@ int main(int argc, char* argv[]){
         int rawStringToBreakLength = strlen(hexStringToBreak)/2;
         
         
-        int xorByte = singleByteXOR_getMostProbableRawByte(hexStringToBreak);
+        
         
         uint8_t* rawStringToBreak = calloc(rawStringToBreakLength+1, sizeof(uint8_t));
         hexStringToRawString(hexStringToBreak, rawStringToBreak);
+
+        int xorByte = singleByteXOR_getMostProbableRawByte_fromRaw(rawStringToBreak, rawStringToBreakLength);
+
         uint8_t* singleByteRawString = createSingleByteRawString(xorByte, rawStringToBreakLength);
         uint8_t* rawResultString = calloc((rawStringToBreakLength)+1, sizeof(uint8_t));
 
